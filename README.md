@@ -1,4 +1,7 @@
 # GenerativArt
-All kind of things related to producing art with code
+All kind of things related to producing art with code.
 
-![gif not found](./shapes/animation/circle.gif)
+## Some Examples
+![gif not found](./shapes/animations/circle.gif)
+
+![gif not found](./links/animations/3dNetwork.gif)

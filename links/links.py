@@ -15,9 +15,12 @@ from opensimplex import OpenSimplex
 
 
 # save the current screen to png file
-def save_frame(time, folder="frames"):
+def save_frame(time, folder="frames", ext="gif"):
 
-    filename = f"frame-{time:03}.gif"
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    filename = f"frame-{time:03}.{ext}"
     path = os.path.join(folder, filename)
     pyglet.image.get_buffer_manager().get_color_buffer().save(path)
     print(filename)
@@ -74,7 +77,7 @@ FRAMES = 170
 time = 0
 K = 150
 
-SIZE = 1200
+SIZE = 500
 LINE_SIZE = 1
 
 # pyglet main window
