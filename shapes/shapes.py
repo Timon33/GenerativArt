@@ -15,9 +15,12 @@ from opensimplex import OpenSimplex
 
 
 # save the current screen to png file
-def save_frame(time, folder="frames"):
+def save_frame(time, folder="frames", ext="gif"):
 
-    filename = f"frame-{time:03}.gif"
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    filename = f"frame-{time:03}.{ext}"
     path = os.path.join(folder, filename)
     pyglet.image.get_buffer_manager().get_color_buffer().save(path)
     print(filename)
@@ -36,7 +39,7 @@ def f(x):
     a = 0.3
     return a * math.pow(x, 3) / abs(x) + (1 - a) * x
 
-def gen_cirle(p, i, t):
+def gen_sphere(p, i, t):
     
     # r = 6 * (1 + randNoise(p, 300, 2) * 0.1)
     # r = 6 * (1 + math.sin(t * math.pi * 2) * 0.15)
@@ -60,7 +63,7 @@ def gen_cube(p, i, t):
     return pos
 
 def gen_point(p, i, t):
-    return gen_cube(p, i, t)
+    return gen_sphere(p, i, t)
 
 def points_to_lines(points, batch, tri_tresh):
     for i in range(len(points)):
@@ -71,7 +74,7 @@ def points_to_lines(points, batch, tri_tresh):
         for j in range(len(points) - i):
             lines[j] = points[i], points[j]
 
-            # dst = max(np.linalg.norm(points[i] - points[j], ord=2), 1)
+            dst = max(np.linalg.norm(points[i] - points[j], ord=2), 1)
             '''
             if dst < tri_tresh:
                 for k in range(len(points) - j):

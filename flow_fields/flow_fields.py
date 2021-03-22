@@ -1,6 +1,5 @@
 import pyglet
 from pyglet import shapes
-import subprocess
 
 import numpy as np
 import math
