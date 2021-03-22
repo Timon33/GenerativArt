@@ -1,3 +1,7 @@
+# individal frames
+frames/*.png
+frames/*.gif
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
